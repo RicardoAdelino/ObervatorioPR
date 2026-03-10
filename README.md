@@ -17,11 +17,6 @@ utilizando variedade de métodos
 4. Ferramentas de avaliação espacial de vulnerabilidade e comparação de similaridade entre regiões
 5. Avaliação de urgência de áreas específicas.
 
-## Citações referencias
-=======
-5. Avaliação de urgência de áreas específicas
-
-
 ## Referencias utilizadas
 ### Última atualização: 2026-03-10
 1. Pesquisas Ecológicas de Longa Duração Mata Atlântica Norte do Paraná (PELD MANP)
