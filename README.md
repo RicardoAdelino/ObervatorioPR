@@ -15,7 +15,6 @@ utilizando variedade de métodos
 2. Acesso a classificação de impacto e avaliação de risco 
 3. Mais de **20.000 registros** de ocorrência compilados para o estado do Paraná
 4. Ferramentas de avaliação espacial de vulnerabilidade e comparação de similaridade entre regiões
-5. Avaliação de urgência de áreas específicas
-6. 
+5. Avaliação de urgência de áreas específicas.
 
 ## Citações referencias
