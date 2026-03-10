@@ -35,7 +35,7 @@ ivm <- function(dados = NULL, grupo = 'all', grid = 50, geom = "IBGE"){
         )  %>% 
         tibble::rownames_to_column(
             ., 
-            var = "hex_id"
+            var = "cel_id"
         ) %>% 
         dplyr::mutate(
             cel_id = as.numeric(cel_id)
@@ -100,7 +100,7 @@ ivm <- function(dados = NULL, grupo = 'all', grid = 50, geom = "IBGE"){
                     ., 
                     cob_[[i]]
                 ) %>% 
-            l   engths(),
+            lengths(),
             .after = "range_cells"
         )
     }
