@@ -1,5 +1,5 @@
 <!-- header -->
-# opree: Obervatorio Paranaense de Espécies Exóticas <a href=""><img src="/home/ricardo/Documentos/CloneGit/ObervatorioPR/image_/hexstick.png" align="right" height="139" /></a> 
+# opree: Obervatorio Paranaense de Espécies Exóticas <a href=""><img src="https://github.com/RicardoAdelino/ObervatorioPR/blob/main/image_/hexstick.png" align="right" height="139" /></a> 
 
 O opree é um projeto colaborativo de de fluxo contínuo planejado para agregar dados biológicos e geográficos e orientar tomadas de decisão sobre espécies exóticas do estado do Paraná. Utilizando o suporte da rede de especialistas em espécies exóticas e invasoras do estado, o **opree** integra e armazena informações com origem em múltiplas bases de dados públicas e particulares para compor o alicerce do **Obervatorio Paranaense de Espécies Exóticas**. 
 
