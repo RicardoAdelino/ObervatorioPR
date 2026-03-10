@@ -24,8 +24,7 @@ utilizando variedade de métodos
 
 
 ## Referencias utilizadas
-### Última atualização: 2026-03-10 08:16:32
-
+### Última atualização: 2026-03-10
 1. Pesquisas Ecológicas de Longa Duração Mata Atlântica Norte do Paraná (PELD MANP)
 2. Affonso, I. P., E. G. Cafofo, R. L. Delariva, F. H. Oda, L. C. Karling, and R. Lourenço-de-Moraes. 2014. List of anurans (Amphibia: Anura) from the rural zone of the municipality of Maringá, Paraná state, southern Brazil. Check List 10: 878882.
 3. Armstrong, C. G., and C. E. Conte. 2010. Taxocenose de anuros (Amphibia: Anura) em uma área de Floresta Ombrófila Densa no Sul do Brasil. Biota Neotrop. 10: 3946.
