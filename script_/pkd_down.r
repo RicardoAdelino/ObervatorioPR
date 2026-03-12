@@ -1,3 +1,12 @@
+gc()
+library(tidyverse)
+db_oco <- readRDS("data/ocorrencias.rds")
+db_splist <- readODS::read_ods("data/sp_list.ods")
+
+#save(db_oco, file = "data/db_oco.rda")
+#save(db_splist, file = "data/db_splist.rda")
+
+
 pkgdown::build_site()
 pkgdown::clean_site()
 
