@@ -3,7 +3,7 @@
 #' Esta função permite fazer o download de camadas espacias relevantes para analise dos dados
 #' 
 
-opree_spat <- function(url, nome_shp = NULL) {
+opree_spat_data <- function(url, nome_shp = NULL) {
   # Cria diretório temporário único
   temp_dir <- tempfile(pattern = "shp_download_", tmpdir = tempdir())
   dir.create(temp_dir, showWarnings = FALSE)

@@ -13,7 +13,6 @@ opree_collection <- function(refs_ = NULL){
         )
     } 
 }
-
 opree_dB <- function(simpl_ = NULL){
      if(is.null(simpl_)){
         db_oco %>% 
