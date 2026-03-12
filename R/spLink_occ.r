@@ -45,7 +45,7 @@ data_prep <- function(splist, token = NULL){
     return(api_path)
 }
 
-opr_spLink <- function(api_list, lst = c(TRUE,FALSE)){
+opree_spLink <- function(api_list, lst = c(TRUE,FALSE)){
     spLink_list <- pbapply::pblapply(
     api_list, 
     function(x) {

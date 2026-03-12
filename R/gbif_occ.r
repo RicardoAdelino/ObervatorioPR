@@ -39,7 +39,7 @@
 #' # Organiza ocorrencia em data frame
 #' purrr::map(gbif_list, pluck,"Data") %>% bind_rows()
 
-opr_gbif <- function(taxa,login, password, mail,dir){
+opree_gbif <- function(taxa,login, password, mail,dir){
     # Get Taxon key
     tk <- rgbif::name_backbone(taxa)$usageKey
     # Data requirements

@@ -17,10 +17,10 @@ opree_collection <- function(refs_ = NULL){
 opree_dB <- function(simpl_ = NULL){
      if(is.null(simpl_)){
         db_oco %>% 
-        dplyr::group_by(dB) %>%
+        #dplyr::group_by(dB) %>%
         dplyr::select(
-            -dB,
             especie_ajustado, 
+            biolevel,
             long_dec, 
             lat_dec,
             ano_inicial, 
@@ -30,8 +30,8 @@ opree_dB <- function(simpl_ = NULL){
         db_oco %>% 
         dplyr::group_by(dB) %>%
         dplyr::select(
-            -dB,
             especie_ajustado, 
+            biolevel,
             long_dec, 
             lat_dec,
             ano_inicial, 
@@ -45,9 +45,8 @@ opree_exo_tbl <- function(filter_ = NULL){
         return(
             db_splist %>% 
             dplyr::select(
-                -registro, 
-                - manter, 
-                - motivo
+                especie, 
+                identificacao
             )
         )
     } else {
@@ -55,9 +54,8 @@ opree_exo_tbl <- function(filter_ = NULL){
             db_splist %>% 
             dplyr::filter(identificacao == "especie") %>% 
             dplyr::select(
-                -registro, 
-                - manter, 
-                - motivo
+                especie, 
+                identificacao
             )
         )
     }
@@ -94,5 +92,5 @@ opree_exo_lst <- function(clean_ = NULL){
         )
     }
 }
-
+opree_exo_lst()
 

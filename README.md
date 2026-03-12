@@ -8,7 +8,46 @@ O opree é um projeto colaborativo de de fluxo contínuo planejado para agregar 
 A base de dados conta com mais de **20.000** registros de ocorrência amostrados para o estado do Paraná.
 A base de dados usa informações de dezenas projetos de pesquisa, estudos publicados em literatura científica, bases de dados especializadas e projetos de pesquisa em andamento para compilar dados geoespaciais de observação de espécies exóticas.
 
-utilizando variedade de métodos 
+## Coleção de dados
+|Funções|Descritor|
+|:--- |:--- |
+|`opree_collection()`|Acesso ao `nome` das coleções de dados e `referencias` internas aos pontos de ocorrencia existentes no opree|
+|`opree_dB()`|Acesso a planilha simplicada de dados `unificados` ou por `coleção`|
+|`opree_exo_tbl()`|Acesso a qualidade da informação das espécies a partir da acuracea de identificação (espécie, genero, familia ou hibrido)|
+|`opree_exo_lst()`|Acesso a lista de espécies de acordo com os nívei de identificação|
+|`opree_shape_collection()`|Acessa ao nome das coleçẽos de dados espaciais existentes no opree|
+|`opree_lulc()`|Acesso a serie temporal (1986 - 2024) de classificação do uso do solo do MapBiomas|
+|`opree_spat_data()`|Download de dados espaciais usando API|
+|`opree_gbif()`|Download de dados de ocorrência da base de dados **Global Biodiversity Facility Information**|
+|`opree_spLink()`|Download de dados de ocorrência da base de dados **speciesLink**|
+
+
+
+
+## Informações da Invasão
+|Funções|Descritor|
+|:--- |:--- |
+|`opree_lifeform()`|Planilha de classificação das formas de vida (i.e. aves, anfibios, verme poliqueta, peixe_osseo_aquatico...) da espécies|  
+|`opree_ecoevo()`|Planilha com a classificação do tipo de habitat por grupo taxonomico (i.e., vertebrado terrestre, invertebrado marinho...)|  
+|`opree_ecos()`|Ecossistema preferencial habitado pela espécie|  
+|`opree_class()`|Classificação doda situação de classificação da espécie no estado do Paraná: **1.** exótico no Brasil **2.** exótico localmente **3.** indeterminado **4.** nativo|  
+
+> <b>NOTA:</b>
+>
+> **1. exótico no Brasil:** espécies em que os limites de distribuição original ocorrem em outros continentes
+> 
+> **2. exótico localmente:** espécies em que os limites de distribuição original podem ocorrer dentro do Brasil, pórem não sobrepõe ou sobrepõe parcialmente os estado do Paraná
+>
+> **3. indeterminado:** espécies que não é possível saber a origem nativa (i.e., espécies crípticas) 
+>
+> **4. nativo:** espécies anteriormente classificadas como exóticas mas que não correspondem aos critérios de classificação convencionais  
+
+## Cobertura espacial
+|Funções|Descritor|
+|:--- |:--- |
+|`opree_prep_data()`|Prepara os dados internamente para visualização geral|
+|`opree_prep_grp()` |Prepara os dados internamente para visualização específica|
+|`opree_map()`| Visualização da distribuição espacial dos registros de ocorrência geral e específico|
 
 ## Ferramentas
 1. Acesso a lista de espécies atualizada ajustada para ecológia da invasão em diferentes ecossistemas

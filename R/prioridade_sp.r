@@ -16,7 +16,7 @@
 #load("data/db_oco.rda")
 #load("data/geometrias.rda")
 
-opr_spPrio <- function(area, filtro = 2){
+opree_spatCover <- function(area, filtro = 2){
     # Filtra lista inicial
     sp_ <- db_splist %>% 
         dplyr::filter(nivel_classificacao == 'especie' & manter == "SIM") %>% 

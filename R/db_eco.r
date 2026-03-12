@@ -45,5 +45,3 @@ opree_class <- function(clean_ = NULL){
        select(especie, status)
     }
 }
-
-opree_class(clean_ = 1)
