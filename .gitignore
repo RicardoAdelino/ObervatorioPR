@@ -1,2 +1,6 @@
 .Rproj.user
 script_/
+script_/db_.r
+script_/db_maintenance.r
+script_/pkd_down.r
+script_/teste.r
