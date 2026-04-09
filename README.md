@@ -3,9 +3,20 @@
 
 O opree é um projeto colaborativo de de fluxo contínuo planejado para agregar dados biológicos e geográficos e orientar tomadas de decisão sobre espécies exóticas do estado do Paraná. Utilizando o suporte da rede de especialistas em espécies exóticas e invasoras do estado, o **opree** integra e armazena informações com origem em múltiplas bases de dados públicas e particulares para compor o alicerce do **Obervatorio Paranaense de Espécies Exóticas**. 
 
+### Instalação
+Apesar do pacote estar no repositório `ObervatorioPR` o pacote se chama `opree`. Por isso, após instalar via repositório, é necessario chamar a biblioteca `opree`. 
+```r
+#carrega dependencia
+install.packages(devtools)
+#carrega pacote 
+devtools::install_github("RicardoAdelino/ObervatorioPR")
+#carrega pacote 
+library(opree)
+```
+
 <!-- Funcionalidades -->
-## Bases de dados
-A base de dados conta com mais de **20.000** registros de ocorrência amostrados para o estado do Paraná.
+## Introdução
+A base de dados conta com aproximadamente **25.000** registros de ocorrência de espécies não nativas amostrados para o estado do Paraná.
 A base de dados usa informações de dezenas projetos de pesquisa, estudos publicados em literatura científica, bases de dados especializadas e projetos de pesquisa em andamento para compilar dados geoespaciais de observação de espécies exóticas.
 
 ## Coleção de dados
