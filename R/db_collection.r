@@ -1,4 +1,23 @@
-# Retorna nome das bases de dados da coleção
+#' @title Database collection
+#' @description Group of four key functions to access opree database.
+#' `opree_collection:` retorna uma lista com os nomes das bases de dados utilizadas
+#' `opree_dB:` retorna dados dos registros de ocorrência combinados ou em lista
+#' `opree_exo_tbl:` lista de espécies
+#' `opree_exo_lst:` lista de espécies
+#  
+#' #' @param refs_ `boleano` Se TRUE retorna referencias. FALSE retorna nome das bases de dados
+#' @param simpl_ `boleano` Se TRUE retorna lista de data frames para cada dB
+#' @param filter_ `boleano` Se TRUE retorna lista com taxa identificados a nível de especie
+#' @param clean_ `boleano` 
+#' 
+#' @return 
+#' `opree_collection:` return specific data for database references, database occurrences
+#' `opree_exo_tbl:` return list of taxa detected at species level
+#' `opree_exo_lst:` return list of taxa detected at multiple taxonomic levels
+#' 
+#' @import dplyr
+#' 
+#' @export 
 opree_collection <- function(refs_ = NULL){
     if(is.null(refs_)){
         return(
@@ -13,83 +32,58 @@ opree_collection <- function(refs_ = NULL){
         )
     } 
 }
-opree_dB <- function(simpl_ = NULL){
-     if(is.null(simpl_)){
-        db_oco %>% 
-        #dplyr::group_by(dB) %>%
-        dplyr::select(
-            especie_ajustado, 
-            biolevel,
-            long_dec, 
-            lat_dec,
-            ano_inicial, 
-            ano_final
-        )
-        } else {
-        db_oco %>% 
-        dplyr::group_by(dB) %>%
-        dplyr::select(
-            especie_ajustado, 
-            biolevel,
-            long_dec, 
-            lat_dec,
-            ano_inicial, 
-            ano_final) %>% 
-        {setNames(group_split(.), group_keys(.)[[1]])}    
-    }
-}
 
+#' @export
 opree_exo_tbl <- function(filter_ = NULL){
     if(is.null(filter_)){
         return(
             db_splist %>% 
             dplyr::select(
-                especie, 
-                identificacao
+                species, 
+                identification
             )
         )
     } else {
         return(
             db_splist %>% 
-            dplyr::filter(identificacao == "especie") %>% 
+            dplyr::filter(identification == "species") %>% 
             dplyr::select(
-                especie, 
-                identificacao
+                species, 
+                identification
             )
         )
     }
 }
 
+#' @export
 opree_exo_lst <- function(clean_ = NULL){
     if(is.null(clean_)){
         return(
             list(
-                especie = db_splist %>% 
-                    dplyr::filter(identificacao == "especie") %>% 
-                    dplyr::pull(especie) %>% 
+                species = db_splist %>% 
+                    dplyr::filter(identification == "species") %>% 
+                    dplyr::pull(species) %>% 
                     base::sort(),
-                genero = db_splist %>% 
-                    dplyr::filter(identificacao == "gênero") %>% 
-                    dplyr::pull(especie) %>% 
+                genus = db_splist %>% 
+                    dplyr::filter(identification == "genus") %>% 
+                    dplyr::pull(species) %>% 
                     base::sort(),
-                familia = db_splist %>% 
-                    dplyr::filter(identificacao == "família") %>% 
-                    dplyr::pull(especie) %>% 
+                familt = db_splist %>% 
+                    dplyr::filter(identification == "family") %>% 
+                    dplyr::pull(species) %>% 
                     base::sort(),
-                hibridos = db_splist %>% 
-                    dplyr::filter(identificacao == "hibrido") %>% 
-                    dplyr::pull(especie) %>% 
+                hybrid = db_splist %>% 
+                    dplyr::filter(identification == "hybrid") %>% 
+                    dplyr::pull(species) %>% 
                     base::sort()
             )
         )
     } else {
         return(
             db_splist %>% 
-            dplyr::filter(identificacao == "especie" & manter == "sim") %>% 
-            dplyr::pull(especie) %>% 
+            dplyr::filter(identification == "species" & keep == "yes") %>% 
+            dplyr::pull(species) %>% 
             base::sort()
         )
     }
 }
-opree_exo_lst()
-

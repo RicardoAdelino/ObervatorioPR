@@ -16,13 +16,10 @@ A base de dados usa informações de dezenas projetos de pesquisa, estudos publi
 |`opree_exo_tbl()`|Acesso a qualidade da informação das espécies a partir da acuracea de identificação (espécie, genero, familia ou hibrido)|
 |`opree_exo_lst()`|Acesso a lista de espécies de acordo com os nívei de identificação|
 |`opree_shape_collection()`|Acessa ao nome das coleçẽos de dados espaciais existentes no opree|
-|`opree_lulc()`|Acesso a serie temporal (1986 - 2024) de classificação do uso do solo do MapBiomas|
-|`opree_spat_data()`|Download de dados espaciais usando API|
+<!-- |`opree_lulc()`|Acesso a serie temporal (1986 - 2024) de classificação do uso do solo do MapBiomas|
+|`opree_spat_data()`|Download de dados espaciais usando API| -->
 |`opree_gbif()`|Download de dados de ocorrência da base de dados **Global Biodiversity Facility Information**|
 |`opree_spLink()`|Download de dados de ocorrência da base de dados **speciesLink**|
-
-
-
 
 ## Informações da Invasão
 |Funções|Descritor|
@@ -56,6 +53,75 @@ A base de dados usa informações de dezenas projetos de pesquisa, estudos publi
 4. Ferramentas de avaliação espacial de vulnerabilidade e comparação de similaridade entre regiões
 5. Avaliação de urgência de áreas específicas.
 
+## Exemplos:
+### 1. Para informação sobre base de dados em uma planilha longa, use:
+
+```r
+opree_dB()
+```
+
+Para informação sobre base de dados em uma lista de planilhas para cada coleção, use:
+
+```r
+opree_dB(simplify_ = TRUE)
+```
+
+### 2. Mapa de vulnerabilidade
+```r
+# Carrega lista de vertebrado terrestres
+vt <- db_splist %>% 
+    dplyr::filter(eco_evo_class == "terrestrial_vertebrate") %>% 
+    dplyr::pull(species)
+
+# Filtra dados para lista de vertebrados terrestres
+sp <- db_oco %>% dplyr::filter(species_adj %in% vt)
+
+# Carrega poligono com area de interesse (PR)
+pr_ <-  geometrias %>% 
+    dplyr::filter(class == "OpenStreeMap") %>% 
+terra::vect()
+```
+
+### Usando a função `opree_spat_grid`
+```r
+grid_map <- opree_spat_grid(
+    data_ = sp, 
+    shape_ = pr_,
+    long_ = "long_dec", 
+    lat_ = "lat_dec", 
+    area_ = 100, 
+    hex_ = TRUE
+)
+```
+Plota mapa com cobertura espacial
+```r
+opree_map(data_ = teste, pallete_ = "Spectral", lgd_break = 10)
+```
+
+### Mapa de vulnerabilidade para municipios
+Carraga geometria dos municipios
+
+```r
+ibge <- geometrias %>% 
+    dplyr::filter(class == "IBGE") %>% 
+    terra::vect()
+
+v_map <- opree_cp(
+    data_ = sp, 
+    long = "long_dec", 
+    lat = "lat_dec", 
+    shp_ = ecor,
+    shape_var = "nome", 
+    data_var = "species_adj"
+)
+
+opree_map_cp(
+    data_ = ind,
+    shp = ecor,
+    lgd_break = 6,
+    name_ = "Vertebrado"
+)
+```
 ## Referencias utilizadas
 ### Última atualização: 2026-03-12 11:58:29
 1. Pesquisas Ecológicas de Longa Duração Mata Atlântica Norte do Paraná (PELD MANP)

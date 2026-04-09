@@ -1,6 +1,22 @@
-#load("data/geometrias.rda")
-
-opree_prep_data <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALSE)){
+#' @title Estimate extent of occurrences using controlled grid cell 
+#' @description mapping occurrence extent using controled grid cell
+#' @param data_ `data.frame` Data frame or tible containing longitude and latitude in decimals
+#' @param shape_ `polygon` spatial polygon of extent of interest.
+#' @param long_ `string` name of longitude variable
+#' @param lat_ `string` name of latitude variable
+#' @param area_ `numeric` number with the size of ares of interest. 
+#' @param hex_ `boolean` If `TRUE` grid cells in hexagon.
+#' 
+#' @return `data.frame` containg the number of occurrences per grid cell
+#' 
+#' @import dplyr
+#' @import units
+#' @import tibble
+#' @import sf   
+#' @import stringr
+#' 
+#' @export
+opree_spat_grid <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALSE)){
     if(is.null(data_)){
         stop("Insira os dados de entrada!")    
     } else if (is.null(shape_)) {
@@ -16,7 +32,7 @@ opree_prep_data <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALS
         sf::st_transform(32722)
         
         if(inherits(shape_,"SpatVector")){
-            poly_ <- st_as_sf(shape_) %>% 
+            poly_ <- sf::st_as_sf(shape_) %>% 
             sf::st_transform(32722)
         } else {
             poly_ <- shape_ %>% 
@@ -57,7 +73,7 @@ opree_prep_data <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALS
                 n_ocs = base::sum(n_ocs)
             ) %>% 
             dplyr::mutate(
-                area = st_area(
+                area = sf::st_area(
                     .[[attr(., "sf_column")]] 
                     ) %>% 
                     units::set_units(., "km^2") ,
@@ -67,17 +83,8 @@ opree_prep_data <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALS
     return(count_tbl)
 }
 
-#teste <- opree_prep_data(
-#    data_ = db_oco, 
-#    shape_ = geometrias %>% filter(class == "OpenStreeMap") %>% terra::vect(),
-#    long_ = "long_dec", 
-#    lat_ = "lat_dec", 
-#    area_ = 100, 
-#    hex_ = FALSE
-#)
-#
-
-opree_prep_grp <- function(data_1 = NULL, data_2, sp_, long_, lat_){
+#' @export
+opree_grid_grp <- function(data_1 = NULL, data_2, sp_, long_, lat_){
     if(is.null(data_1)){
         oco <- opree_dB()
     } else {
@@ -92,6 +99,7 @@ opree_prep_grp <- function(data_1 = NULL, data_2, sp_, long_, lat_){
         ) %>% 
         dplyr::left_join(
             .,
+            # Subset by life form
             opree_ecoevo(), 
             by = c("especie_ajustado" = "especie")
         ) %>%   
@@ -110,7 +118,7 @@ opree_prep_grp <- function(data_1 = NULL, data_2, sp_, long_, lat_){
             lefft = FALSE
         ) %>% 
         sf::st_drop_geometry() %>% 
-        left_join(data_2, .)
+        dplyr::left_join(data_2, .)
     return(pts_cells)
 }
 

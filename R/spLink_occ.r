@@ -1,24 +1,27 @@
-#' Registros de ocorrência do spLink
+#' @title Download occurrences from spLink
 #'
-#' Esta função permite fazer o download dos registros de ocorrência da base de dados brasileira spLink em formato `.csv` para uma ou múltiplas espécies.
+#' @description This function allows you to download occurrence records from the Brazilian spLink database in `.csv` format for one or multiple species.
 #'    
-#' @param splist `vetor`com a nomenclatura biniminal das espécies (i.e., c("Lepus saxatilis","Puma concolor"))
-#' @param token `vetor`com sua chave de segurança gerada pessoal (i.e., token) na plataforma spLink
-#' @param api_list `lista` dos caminhos da API gerados para cada espécies
-#' @param lst `boolenao` indicando se o resultado deve ser no formato lista de data frame (lst = TRUE) ou condensado em um único data frame (lst = FALSE)
+#' @param splist `vector`species binomial (i.e., c("Lepus saxatilis","Puma concolor"))
+#' @param token `vector`personal token obtained in spLink plataform
+#' @param api_list `list` of species API paths obtained from `data_prep` function
+#' @param lst `boolen` indicating if output shoul return a list of data frame (lst = TRUE) or a single long data.frame (lst = FALSE)
 #' 
-#' @return `data_prep` retorna uma lista com o caminho especifico de cada espécies para busca na API. `opr_spLink` retorna arquivo único do tipo data frame para todas as espécies de interesse da lista. Retona lista de dataframes se o paramentro `lst == TRUE`. 
+#' @return `data.frame` occurrences obtained from spLink
+#' 
+#' @import dplyr
+#' @import httr2
+#' @import stringr
 #' 
 #' @examples 
-#' NOT RUN
+#' \dontrun{
 #' spList <- data_prep(    
-#'    splist = c("Perna perna","Perna viridis","Abramites hypselonotus","Callithrix jacchus"), 
-#'    token = "adicine seu token"
+#' splist = c("Perna perna","Perna viridis","Abramites hypselonotus","Callithrix jacchus"), 
+#' token = "adicine seu token"
 #' )
-#'
-#'opr_spLink(api_list = spList, lst = TRUE)
-
-# Prepara os dados
+#' opree_spLink(api_list = spList, lst = TRUE)
+#' }
+#' @export 
 data_prep <- function(splist, token = NULL){
     if(is.null(token)){
         return(
@@ -45,6 +48,7 @@ data_prep <- function(splist, token = NULL){
     return(api_path)
 }
 
+#' @export 
 opree_spLink <- function(api_list, lst = c(TRUE,FALSE)){
     spLink_list <- pbapply::pblapply(
     api_list, 
