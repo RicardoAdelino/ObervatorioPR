@@ -7,22 +7,11 @@
 opree_collection(refs_ = NULL)
 }
 \arguments{
-\item{simpl_}{\code{boleano} Se TRUE retorna lista de data frames para cada dB}
-
-\item{filter_}{\code{boleano} Se TRUE retorna lista com taxa identificados a nível de especie}
-
-\item{clean_}{\code{boleano}}
+\item{refs_}{\code{bolean} parameter to determine if return references associated with databases}
 }
 \value{
-\verb{opree_collection:} return specific data for database references, database occurrences
-\verb{opree_exo_tbl:} return list of taxa detected at species level
-\verb{opree_exo_lst:} return list of taxa detected at multiple taxonomic levels
+Default return a vector with database identification code. If refs_ = TRUE return a tibble with database identification code and the references associated.
 }
 \description{
-Group of four key functions to access opree database.
-\verb{opree_collection:} retorna uma lista com os nomes das bases de dados utilizadas
-\verb{opree_dB:} retorna dados dos registros de ocorrência combinados ou em lista
-\verb{opree_exo_tbl:} lista de espécies
-\verb{opree_exo_lst:} lista de espécies
-#' @param refs_ \code{boleano} Se TRUE retorna referencias. FALSE retorna nome das bases de dados
+This function allow to access the sources of databases and their references
 }

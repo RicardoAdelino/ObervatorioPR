@@ -3,7 +3,7 @@
 #' @param list_lv `bolean` determine the level of identification in raw data 
 #' @return Default return a list of vector containing different levels of identification. 
 #' If `list_lv = FALSE` return a list of vector with non-valid classificatopm level
-#' @import dplyr' 
+#' @import dplyr
 #' @export 
 
 opree_exo_lst <- function(list_lv = TRUE){
