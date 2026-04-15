@@ -1,6 +1,6 @@
 Language: [English](README.md) | [Portuguese](README_PTBr.md)
 <!-- header -->
-# opree:Obervatorio Paranaense de Espécies Exóticas <a href=""><img src="image_/hexstick.png" align="right" height="159" /></a> 
+# opree:Obervatorio Paranaense de Espécies Exóticas <a href=""><img src="man/figures/logo.png" align="right" height="120" alt="" /></a> 
 
 Opree is a collaborative, continuous-flow project designed to aggregate biological and geographic data for exotic species in the state of Paraná. Toghether with the support of the state's network of experts on exotic and invasive species, **opree** integrates and stores information originating from public and private databases to form the foundation of the **Paraná Observatory of Exotic Species**.
 
