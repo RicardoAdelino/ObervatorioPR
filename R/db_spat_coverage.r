@@ -16,7 +16,7 @@
 #' @import stringr
 #' 
 #' @export
-opree_spat_grid <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALSE)){
+opree_spat_grid <- function(data_, shape_,long_, lat_, area_, square_grid = c(TRUE,FALSE)){
     if(is.null(data_)){
         stop("Insira os dados de entrada!")    
     } else if (is.null(shape_)) {
@@ -45,7 +45,7 @@ opree_spat_grid <- function(data_, shape_,long_, lat_, area_, hex_ = c(TRUE,FALS
             poly_,
             cellsize = units::as_units(area_, "km^2"), 
             what = 'polygons',
-            square = hex_
+            square = square_grid
             )  %>% 
             sf::st_as_sf() %>% 
             sf::st_intersection(

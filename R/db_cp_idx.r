@@ -15,7 +15,7 @@
 #' @import tidyterra 
 #' @examples 
 #' \dontrun{
-#' vt <- db_splist %>% filter(eco_evo_class == "vertebrado_terrestre") %>% pull(especie)
+#' vt <- db_splist %>% filter(eco_evo_class == "terrestrial_vertebrate") %>% pull(especie)
 #' sp <- db_oco %>% filter(especie_ajustado %in% vt)
 #' municipios <- geometrias %>% filter(class == "IAT") %>% vect()
 #' ecor <- geometrias %>% filter(class == "IBGE") %>% vect()
@@ -48,7 +48,7 @@ opree_cp <- function(data_, long, lat, shp_ ,shape_var, data_var, area = 1e6){
   idx <-  dplyr::left_join(rich, mun_areas)
   idx <- idx %>% 
     dplyr::mutate(
-      ind = N / area_km2,# * 1000,  # espécies por 1000km²
+      ind = N / area_km2, # espécies por 1000km²
       rank = rank(desc(ind)), 
       perc = percent_rank(ind)
   )
