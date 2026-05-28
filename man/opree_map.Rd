@@ -7,25 +7,23 @@
 opree_map(data_ = NULL, pallete_ = "Spectral", lgd_break = 8, scale_label = "")
 }
 \arguments{
+\item{data_}{\code{data.frame} generated from \code{opree_spat_grid} function}
+
 \item{pallete_}{\code{string} any color sequence derived from \code{RColorBrewer}}
 
 \item{lgd_break}{\code{string} scale of color values. Default is 8}
 
 \item{scale_label}{= "string" Set the title of color range palete}
-
-\item{data_`data.frame`}{generated from \code{opree_spat_grid} function}
-
-\item{name_}{\code{string} plot title}
 }
 \description{
 This function uses occurrence records to estimate the spatial extent of records using grid custom grid cells
 }
 \examples{
 \dontrun{
-vt <- db_splist \%>\% filter(eco_evo_class == "terrestrial_vertebrate") \%>\% pull(species)
-sp <- db_oco \%>\% filter(species_adj \%in\% vt) 
-pr_ <- geometrias \%>\% filter(class == "OpenStreeMap") \%>\% vect()
-teste <- opree_spat_grid(
+vt <- db_splist \%>\% dplyr::filter(eco_evo_class == "terrestrial_vertebrate") \%>\% dplyr::pull(species)
+sp <- db_oco \%>\% dplyr::filter(species_adj \%in\% vt) 
+pr_ <- geometrias \%>\% dplyr::filter(class == "OpenStreeMap") \%>\% terra::vect()
+grid_plot <- opree_spat_grid(
    data_ = sp, 
    shape_ = pr_, 
    long_ = "long_dec", 
@@ -34,6 +32,6 @@ teste <- opree_spat_grid(
    hex_ = FALSE
 )
 
-opree_map(teste, lgd_break = 8)
+opree_map(grid_plot, lgd_break = 8)
 }
 }

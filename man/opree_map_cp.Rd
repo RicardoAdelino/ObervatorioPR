@@ -7,7 +7,7 @@
 opree_map_cp(data_, shp_, lgd_break, name_, pallete_ = "Spectral")
 }
 \arguments{
-\item{data_}{\verb{data frame ou tibble} with occurrence records and species name}
+\item{data_}{\verb{data.frame or tibble} with occurrence records and species name}
 
 \item{shp_}{\code{sf} geometry file in sf class}
 

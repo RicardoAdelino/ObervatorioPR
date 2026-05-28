@@ -2,18 +2,14 @@
 % Please edit documentation in R/db_spLink_occ.r
 \name{data_prep}
 \alias{data_prep}
-\title{Download occurrences from spLink}
+\title{Prepare data for occurrences from spLink}
 \usage{
 data_prep(splist, token = NULL)
 }
 \arguments{
 \item{splist}{\code{vector}species binomial (i.e., c("Lepus saxatilis","Puma concolor"))}
 
-\item{token}{\code{vector}personal token obtained in spLink plataform}
-
-\item{api_list}{\code{list} of species API paths obtained from \code{data_prep} function}
-
-\item{lst}{\code{boolen} indicating if output shoul return a list of data frame (lst = TRUE) or a single long data.frame (lst = FALSE)}
+\item{token}{\code{vector} personal token obtained in spLink plataform}
 }
 \value{
 \code{data.frame} occurrences obtained from spLink

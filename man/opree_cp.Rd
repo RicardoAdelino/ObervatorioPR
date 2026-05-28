@@ -29,17 +29,17 @@ This index uses colonization pressure by kilometer square of spatial area to map
 }
 \examples{
 \dontrun{
-vt <- db_splist \%>\% filter(eco_evo_class == "terrestrial_vertebrate") \%>\% pull(especie)
-sp <- db_oco \%>\% filter(especie_ajustado \%in\% vt)
-municipios <- geometrias \%>\% filter(class == "IAT") \%>\% vect()
-ecor <- geometrias \%>\% filter(class == "IBGE") \%>\% vect()
+vt <- db_splist \%>\% dplyr::filter(eco_evo_class == "terrestrial vertebrate") \%>\% dplyr::pull(species_adj)
+sp <- db_oco \%>\% dplyr::filter(species_adj \%in\% vt)
+municipios <- geometrias \%>\% dplyr::filter(class == "IAT") \%>\% terra::vect()
+ecor <- geometrias \%>\% dplyr::filter(class == "IBGE") \%>\% terra::vect()
 ind <- opree_cp(
    data_ = sp, 
    long = "long_dec", 
    lat = "lat_dec", 
    shp_ = ecor,
    shape_var = "nome", 
-   data_var = "especie_ajustado"
+   data_var = "species_adj"
 )
 } 
 }

@@ -24,6 +24,8 @@ opree_spat_grid(
 
 \item{area_}{\code{numeric} number with the size of ares of interest.}
 
+\item{square_grid}{\code{boolena} to determine if grid should be hexagonal or not}
+
 \item{hex_}{\code{boolean} If \code{TRUE} grid cells in hexagon.}
 }
 \value{
@@ -31,4 +33,19 @@ opree_spat_grid(
 }
 \description{
 mapping occurrence extent using controled grid cell
+}
+\examples{
+\dontrun{
+#' vt <- db_splist \%>\% dplyr::filter(eco_evo_class == "terrestrial_vertebrate") \%>\% dplyr::pull(species)
+sp <- db_oco \%>\% dplyr::filter(species_adj \%in\% vt) 
+pr_ <- geometrias \%>\% dplyr::filter(class == "OpenStreeMap") \%>\% terra::vect()
+grid_plot <- opree_spat_grid(
+   data_ = sp, 
+   shape_ = pr_, 
+   long_ = "long_dec", 
+   lat_ = "lat_dec",
+   area = 100, 
+   hex_ = FALSE
+ )
+}
 }

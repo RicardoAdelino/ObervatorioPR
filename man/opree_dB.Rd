@@ -4,14 +4,23 @@
 \alias{opree_dB}
 \title{occurrences database}
 \usage{
-opree_dB(simplify_ = NULL)
+opree_dB(raw_ = TRUE, subset_ = NULL, key_ = NULL)
 }
 \arguments{
-\item{simplify_}{\code{boleano} If \code{TRUE} return a list of data.frame for each database contributor}
+\item{raw_}{\code{boleano} Default is \code{TRUE} return a data.frame with species occurrences}
+
+\item{subset_}{\code{vector} with the condition to be filtered}
+
+\item{key_}{\code{vector} with the variable to the key variable to be filtered}
 }
 \value{
 return data.frame with species name, longitude, latitude and available year of observation
 }
 \description{
-Main database of opree containing occurrence records from the collection of databases
+Main file containing occurrence records from the collection of databases
+}
+\examples{
+\dontrun{
+opree_dB(raw = FALSE,subset_ = "PELD", key_ = "dB")
+}
 }

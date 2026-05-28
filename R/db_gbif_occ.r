@@ -7,13 +7,9 @@
 #' @param password `string` personal password used to log in GBIF
 #' @param mail `string` personal email used to log in GBIF
 #' @param dir `string` path to store downloaded file
-#' 
 #' @return List of occurrence data and metadata. List element `Data` store occurrences in `csv` format while `Meta_data` store summary metadata including occurrence `DOI`.
-#' 
-#' @import dplyr
 #' @import rgbif 
 #' @import tibble
-#' 
 #' @export 
 opree_gbif <- function(taxa,login, password, mail,dir){
     # Get Taxon key
@@ -48,7 +44,7 @@ opree_gbif <- function(taxa,login, password, mail,dir){
     # Control uncertainty distance in meters
     rgbif::pred_or(  
         rgbif::pred_lt("coordinateUncertaintyInMeters",10000),
-        rgbif::red_isnull("coordinateUncertaintyInMeters")
+        rgbif::pred_isnull("coordinateUncertaintyInMeters")
     ),
     # Output format
     format = "SIMPLE_CSV"

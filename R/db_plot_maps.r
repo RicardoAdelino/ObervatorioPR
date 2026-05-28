@@ -1,8 +1,7 @@
 #' @title Plot grid maps derived from opree data
 #' @description This function uses occurrence records to estimate the spatial extent of records using grid custom grid cells 
-#' @param data_`data.frame` generated from `opree_spat_grid` function
+#' @param data_ `data.frame` generated from `opree_spat_grid` function
 #' @param lgd_break `string` scale of color values. Default is 8
-#' @param name_ `string` plot title
 #' @param pallete_ `string` any color sequence derived from `RColorBrewer`
 #' @param scale_label = "string" Set the title of color range palete
 #' @import dplyr
@@ -11,10 +10,10 @@
 #' @import RColorBrewer
 #' @examples 
 #' \dontrun{
-#' vt <- db_splist %>% filter(eco_evo_class == "terrestrial_vertebrate") %>% pull(species)
-#' sp <- db_oco %>% filter(species_adj %in% vt) 
-#' pr_ <- geometrias %>% filter(class == "OpenStreeMap") %>% vect()
-#' teste <- opree_spat_grid(
+#' vt <- db_splist %>% dplyr::filter(eco_evo_class == "terrestrial_vertebrate") %>% dplyr::pull(species)
+#' sp <- db_oco %>% dplyr::filter(species_adj %in% vt) 
+#' pr_ <- geometrias %>% dplyr::filter(class == "OpenStreeMap") %>% terra::vect()
+#' grid_plot <- opree_spat_grid(
 #'    data_ = sp, 
 #'    shape_ = pr_, 
 #'    long_ = "long_dec", 
@@ -23,15 +22,16 @@
 #'    hex_ = FALSE
 #')
 #'
-#'opree_map(teste, lgd_break = 8)
+#'opree_map(grid_plot, lgd_break = 8)
 #'}
 #' @export 
+
 opree_map <- function(data_ = NULL, pallete_ = "Spectral", lgd_break = 8, scale_label = ""){
     return(
         if(is.null(data_)){
-            stop("Insira os dados de entrada!")    
+            stop("Stop plot process, input data not available")    
         } else if (!inherits(data_, "sf")){
-           stop("dados de entrada não padronizados, prepare os dados usando a função opree_prep_data")
+           stop("Non-standard input data detected!. Prepare the data using the opree_prep_data function")
         }else {
             data_ %>% 
             ggplot2::ggplot() + 

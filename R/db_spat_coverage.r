@@ -4,21 +4,33 @@
 #' @param shape_ `polygon` spatial polygon of extent of interest.
 #' @param long_ `string` name of longitude variable
 #' @param lat_ `string` name of latitude variable
-#' @param area_ `numeric` number with the size of ares of interest. 
+#' @param area_ `numeric` number with the size of ares of interest.
+#' @param square_grid `boolena` to determine if grid should be hexagonal or not 
 #' @param hex_ `boolean` If `TRUE` grid cells in hexagon.
-#' 
 #' @return `data.frame` containg the number of occurrences per grid cell
-#' 
 #' @import dplyr
 #' @import units
 #' @import tibble
 #' @import sf   
 #' @import stringr
-#' 
+#' @examples
+#' \dontrun{
+#' #' vt <- db_splist %>% dplyr::filter(eco_evo_class == "terrestrial_vertebrate") %>% dplyr::pull(species)
+#' sp <- db_oco %>% dplyr::filter(species_adj %in% vt) 
+#' pr_ <- geometrias %>% dplyr::filter(class == "OpenStreeMap") %>% terra::vect()
+#' grid_plot <- opree_spat_grid(
+#'    data_ = sp, 
+#'    shape_ = pr_, 
+#'    long_ = "long_dec", 
+#'    lat_ = "lat_dec",
+#'    area = 100, 
+#'    hex_ = FALSE
+#'  )
+#'}
 #' @export
 opree_spat_grid <- function(data_, shape_,long_, lat_, area_, square_grid = c(TRUE,FALSE)){
     if(is.null(data_)){
-        stop("Insira os dados de entrada!")    
+        stop("Stop plot process, input data not available")    
     } else if (is.null(shape_)) {
        stop("Insira os dados espaciais!")
     } else {
@@ -39,8 +51,7 @@ opree_spat_grid <- function(data_, shape_,long_, lat_, area_, square_grid = c(TR
             sf::st_transform(32722)
         }
         
-        # ⤷ Cria hexagonos ao longo do poligono do Parana
-        print("Criando malha espacial na área de interesse, isso pode levar alguns minutos!")
+        cat("Creating a spatial grid over the area of interest. It can take a few minutes!")
         hex_ <- sf::st_make_grid(
             poly_,
             cellsize = units::as_units(area_, "km^2"), 

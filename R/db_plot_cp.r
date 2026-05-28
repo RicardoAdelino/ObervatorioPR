@@ -1,6 +1,7 @@
 #' @title Plot colonization pressure from `opree_cp`
 #' @description This function uses occurrence records to estimate colonization pressure measured by the number of exotic species per square kilometer of the unit of interest.#' 
-#' @param data_ `data frame ou tibble` with occurrence records and species name
+#' @name opree_map_cp
+#' @param data_ `data.frame or tibble` with occurrence records and species name
 #' @param data_`data.frame` from `opree_cp` function
 #' @param shp_ `sf` geometry file in sf class
 #' @param lgd_break `string` scale of color values

@@ -20,6 +20,7 @@ Depends:
 LazyData: true
 Imports: 
     dplyr,
+    purrr,
     geobr,
     httr2,
     pbapply,

@@ -4,14 +4,30 @@
 \alias{opree_exo_tbl}
 \title{opree species list}
 \usage{
-opree_exo_tbl(sp_val = TRUE)
+opree_exo_tbl(summary_ = TRUE, subset_ = NULL, key_ = NULL)
 }
 \arguments{
-\item{sp_val}{\code{bolean} determine the level of confidence of species in species list}
+\item{summary_}{\code{bolean} Deafult is \code{TRUE} and determine filtered conditions}
+
+\item{subset_}{\code{vector} with the condition to be filtered}
+
+\item{key_}{\code{vector} with the variable to the key variable to be filtered or summarized}
 }
 \value{
 Default is \code{TRUE} and return a tibble containing the species with high confidence in their non-native status and prefered environment.
 }
 \description{
 This function allow to access the up-to date non-native species list
+}
+\examples{
+\dontrun{
+# Get species list
+opree_exo_tbl(summary_ = FALSE)
+
+# Summary of group of interest
+opree_exo_tbl(summary_ = TRUE, key_ = "eco_evo_class")
+
+# Filter by of group of interest
+opree_exo_tbl(subset_ = "aquatic_vertebrate", key_ = "eco_evo_class") 
+}
 }
